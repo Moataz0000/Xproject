@@ -31,7 +31,8 @@ INSTALLED_APPS = [
 
 OTHER_PACKAGE = [
     'rest_framework',
-    'django_extensions'
+    'django_extensions',
+    'silk',
 ]
 
 INSTALLED_APPS += OTHER_PACKAGE
@@ -44,6 +45,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'silk.middleware.SilkyMiddleware',
+
 ]
 
 ROOT_URLCONF = 'config.urls'
