@@ -3,6 +3,7 @@ from .views import (
     ProductListView,
     ProductDetailView,
     OrderListView,
+
     product_info,
 )
 
@@ -10,6 +11,7 @@ from .views import (
 app_name = 'products'
 
 urlpatterns = [
+
     path('products/', ProductListView.as_view(), name='product'),
     path('products/<int:product_id>/', ProductDetailView.as_view(), name='product_detail'),
     path('orders/', OrderListView.as_view(), name='order_list'),

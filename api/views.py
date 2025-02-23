@@ -23,8 +23,6 @@ class OrderListView(generics.ListAPIView):
     serializer_class = OrderSerializer
 
 
-
-
 @api_view(http_method_names=['GET'])
 def product_info(request):
     products = Product.objects.all()
