@@ -23,6 +23,16 @@ class OrderListView(generics.ListAPIView):
     serializer_class = OrderSerializer
 
 
+
+class UserOrderListView(generics.ListAPIView):
+    queryset = Order.objects.prefetch_related('items__product')
+    serializer_class = OrderSerializer
+
+    def get_queryset(self):
+        qs = super().get_queryset() # To continue work on the queryset over there
+        return qs.filter(status=Order.StatusChoices.CANCELLED)
+
+
 @api_view(http_method_names=['GET'])
 def product_info(request):
     products = Product.objects.all()

@@ -3,6 +3,7 @@ version: "3"
 services:
   web:
     build: .
+    container_name: x_project
     ports:
       - "8000:8000"
     volumes:
