@@ -10,4 +10,3 @@ services:
       - .:/app
     environment:
       - DEBUG=True
-    command: ["sh", "-c", "pip install watchmedo && watchmedo auto-restart --directory=/app --pattern='*.py' --recursive -- python manage.py runserver 0.0.0.0:8000"]

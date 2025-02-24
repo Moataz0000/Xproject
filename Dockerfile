@@ -10,6 +10,7 @@ RUN apt-get update
 # Copy the requirements file
 COPY requirements.txt .
 
+RUN  pip install --upgrade pip
 # Install dependencies with verbose output for debugging
 RUN pip install --no-cache-dir -r requirements.txt --verbose
 
