@@ -3,9 +3,11 @@ version: "3"
 services:
   web:
     build: .
+    container_name: x_project
     ports:
       - "8000:8000"
     volumes:
       - .:/app
     environment:
       - DEBUG=True
+    command: ["sh", "-c", "pip install watchmedo && watchmedo auto-restart --directory=/app --pattern='*.py' --recursive -- python manage.py runserver 0.0.0.0:8000"]
