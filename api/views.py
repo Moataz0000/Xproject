@@ -5,6 +5,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.db.models import Max
 from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
+
 
 class ProductListView(generics.ListAPIView):
     queryset = Product.objects.filter(stock__gt=0)
@@ -27,10 +29,11 @@ class OrderListView(generics.ListAPIView):
 class UserOrderListView(generics.ListAPIView):
     queryset = Order.objects.prefetch_related('items__product')
     serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         qs = super().get_queryset() # To continue work on the queryset over there
-        return qs.filter(status=Order.StatusChoices.CANCELLED)
+        return qs.filter(user=self.request.user)
 
 
 @api_view(http_method_names=['GET'])
