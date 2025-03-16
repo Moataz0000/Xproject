@@ -1,0 +1,5 @@
+config/.env
+.env
+db.sqlite3
+models.dot
+.venv
